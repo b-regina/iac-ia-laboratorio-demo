@@ -1,0 +1,28 @@
+name: Validacion IaC
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener codigo
+        uses: actions/checkout@v4
+      - name: Instalar OpenTofu
+        uses: opentofu/setup-opentofu@v2
+        with:
+          tofu_version: 1.13.9
+      - name: Inicializar
+        run: tofu init -backend=false -input=false
+      - name: Comprobar formato
+        run: tofu fmt -check -diff
+      - name: Validar
+        run: tofu validate -no-color
+      - name: Mostrar plan
+        run: tofu plan -input=false -no-color
