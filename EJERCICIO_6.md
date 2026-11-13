@@ -119,8 +119,13 @@ Abre `.github/workflows/validacion.yml`. No crees otro workflow. Haz estos cambi
 ```
 
 ```yaml
-        run: tofu plan -input=false -no-color -var-file=escenario-integracion.tfvars -out=plan-integracion.tfplan
+        run: >-
+          tofu plan -input=false -no-color
+          -var-file=escenario-integracion.tfvars
+          -out=plan-integracion.tfplan
 ```
+
+En YAML, `>-` une esas tres líneas en un único comando para el runner. Respeta los espacios de indentación: `run` queda bajo el paso y las tres líneas del comando quedan más adentro.
 
 3. **Inmediatamente después** del plan predeterminado, añade este paso nuevo, con la misma indentación que las demás líneas `- name:`:
 
@@ -208,4 +213,4 @@ Si tu equipo ya tiene VS Code y Git, o permite instalarlos, abre **la misma copi
 
 **Reto autónomo:** en otra rama de tu copia cambia solo el nombre de la ficha de ayuda a `portal-asistencia`. Mantén el resto correcto. Predice si las validaciones y el plan pasarán y qué texto dará la política. Compruébalo, registra el enlace del fallo y vuelve a la configuración correcta. Usa solo datos ficticios.
 
-**Límite profesional:** esta regla de Python es un ejemplo acotado de *policy as code* para un laboratorio sin estado persistente. En producción harían falta políticas protegidas, aprobaciones, control de versiones, cobertura de más operaciones y proveedores, análisis de secretos y costes reales, y controles de permisos. Un plan aprobado aquí no autoriza ningún despliegue real.
+**Límite profesional:** esta política es didáctica. En producción harían falta reglas protegidas, aprobaciones independientes, cobertura de más recursos, secretos, costes y permisos. Un plan aprobado aquí no autoriza un despliegue real.
