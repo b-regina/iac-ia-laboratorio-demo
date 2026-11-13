@@ -21,10 +21,37 @@ jobs:
       - name: Inicializar
         run: tofu init -backend=false -input=false
       - name: Comprobar formato
+        id: formato
         run: tofu fmt -check -diff
       - name: Validar
+        id: validar
         run: tofu validate -no-color
       - name: Plan con valores por defecto
+        id: plan_predeterminado
         run: tofu plan -input=false -no-color
       - name: Plan del escenario integracion
+        id: plan_integracion
         run: tofu plan -input=false -no-color -var-file=escenario-integracion.tfvars
+      - name: Resumir comprobaciones
+        if: ${{ always() }}
+        run: |
+          {
+            echo "## Resultados del laboratorio"
+            echo ""
+            echo "Commit analizado: $GITHUB_SHA"
+            echo ""
+            echo "| Comprobación | Resultado |"
+            echo "| --- | --- |"
+            echo "| Formato | ${{ steps.formato.outcome }} |"
+            echo "| Validación | ${{ steps.validar.outcome }} |"
+            echo "| Plan predeterminado | ${{ steps.plan_predeterminado.outcome }} |"
+            echo "| Plan de integración | ${{ steps.plan_integracion.outcome }} |"
+          } | tee evidencia.txt >> "$GITHUB_STEP_SUMMARY"
+      - name: Publicar evidencia
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v7
+        with:
+          name: evidencia-iac-${{ github.run_id }}-${{ github.run_attempt }}
+          path: evidencia.txt
+          if-no-files-found: error
+          retention-days: 7
