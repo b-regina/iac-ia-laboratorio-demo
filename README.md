@@ -1,17 +1,19 @@
 # Laboratorio de IaC e IA
 
-Proyecto ficticio `portal-demo` para practicar Infraestructura como Código. El código registra un nombre y un entorno mediante `terraform_data`, un recurso integrado en OpenTofu. El workflow calcula un plan y muestra lo que se registraría. No aplica cambios ni crea infraestructura en la nube.
+Proyecto ficticio `portal-demo` para practicar Infraestructura como Código. OpenTofu usa el recurso incorporado `terraform_data`; GitHub Actions ejecuta comprobaciones y calcula un plan. No hay `apply`, credenciales ni infraestructura cloud comercial.
 
-## Primera práctica desde el navegador
+## Ejercicio 1: mi primer cambio de infraestructura como código
 
-1. En tu copia del repositorio, cambia `github.com` por `github.dev` en la URL. Puede abrirse en `vscode.dev`. Abre `variables.tf`.
-2. Lee `default = "desarrollo"` y predice qué mostrará el plan. Cambia el valor a `pruebas` y guarda con `Ctrl+S`.
-3. Abre Control de código fuente, escribe el mensaje `Ejercicio 1: cambiar entorno a pruebas` y confirma el cambio con **Commit & Push**. Si el editor presenta los pasos por separado, confirma primero y después publica o sincroniza los cambios.
-4. En la página de tu repositorio en `github.com`, entra en **Actions** y abre la ejecución de **Validacion IaC** correspondiente a tu commit. Abre el trabajo **comprobar** y consulta las etapas Inicializar, Comprobar formato, Validar y Mostrar plan.
-5. En el plan, busca `terraform_data.aplicacion`, `entorno = "pruebas"` y `Plan: 1 to add, 0 to change, 0 to destroy`. En cada ejecución se usa un runner nuevo, así que no conserva el estado de ejecuciones anteriores.
+**Meta:** cambiar el entorno de `desarrollo` a `pruebas` y explicar qué propone OpenTofu. El alumno necesita solo GitHub.com en el navegador y su propia copia pública de esta plantilla.
 
-Si no tienes GitHub Copilot disponible, pega el código ficticio en ChatGPT Free y solicita que identifique variable, recurso y salida. Comprueba las afirmaciones mirando los archivos y el resultado del workflow.
+1. En tu copia, abre `variables.tf`. Comprueba que pone `default = "desarrollo"`.
+2. Pulsa el lápiz **Edit this file**. Sustituye únicamente `desarrollo` por `pruebas`.
+3. Pulsa **Commit changes...**, escribe `Ejercicio 1: cambiar entorno a pruebas` y confirma el cambio en tu copia.
+4. En la pestaña **Actions**, abre la ejecución de **Validacion IaC** que corresponde a ese commit. Entra en el trabajo **comprobar** y observa **Inicializar**, **Comprobar formato**, **Validar** y **Mostrar plan**.
+5. Comprueba que el plan muestra `entorno = "pruebas"` y `Plan: 1 to add, 0 to change, 0 to destroy`. El runner comienza sin estado anterior en cada ejecución; el plan no aplica cambios.
 
-Si el editor de `github.dev` pide una autorización que tu cuenta o navegador no permite, puedes hacer el mismo cambio desde `github.com`: abre `variables.tf`, pulsa **Edit this file** (icono del lápiz), modifica el valor y elige **Commit changes**. Después consulta **Actions** como en el paso 4.
+**IA en el primer ejercicio:** la docente muestra en directo cómo preguntar a Copilot Chat o ChatGPT qué relación tienen `variables.tf`, `main.tf` y `outputs.tf`. Los participantes comparan la respuesta con los archivos y el plan. La IA no necesita modificar el repositorio; el primer objetivo es entender y comprobar el cambio. En una práctica posterior se incorporará su uso autónomo.
 
-Para volver a intentarlo, modifica solo el valor de `entorno`, guarda y confirma un nuevo commit. La guía del ejercicio explica los puntos de control, las incidencias y las preguntas finales.
+**Editor opcional:** quien quiera practicar con `github.dev` puede abrir su copia allí, guardar `variables.tf` y usar **Source Control → Commit & Push**. El editor web no tiene terminal. El modo Agente integrado y la ejecución local de OpenTofu no forman parte de este ejercicio; OpenTofu se ejecuta en Actions.
+
+Si Actions falla, abre el paso marcado en rojo y lee la línea del error antes de corregir y confirmar un nuevo commit. No introduzcas errores deliberados en la rama principal de la plantilla docente.
