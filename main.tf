@@ -7,5 +7,5 @@ module "portal" {
 module "ayuda" {
   source  = "./modulo_ficha"
   nombre  = "portal-ayuda"
-  entorno = var.entorno
+  entorno = "desarrollo"
 }
