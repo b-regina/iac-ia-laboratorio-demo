@@ -31,7 +31,7 @@ jobs:
         run: tofu plan -input=false -no-color
       - name: Plan del escenario integracion
         id: plan_integracion
-        run: tofu plan -input=false -no-color -var-file=escenario-inexistente.tfvars
+        run: tofu plan -input=false -no-color -var-file=escenario-integracion.tfvars
       - name: Resumir comprobaciones
         if: ${{ always() }}
         run: |
