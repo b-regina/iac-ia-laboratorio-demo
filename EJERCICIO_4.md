@@ -6,7 +6,7 @@ El equipo ficticio de `portal-demo` ya escribe su configuración IaC, usa variab
 
 **Objetivo técnico:** comprender un archivo YAML de GitHub Actions, relacionar cada paso con su resultado y registrar evidencias tanto en ejecuciones correctas como incorrectas. **Resultado esperado:** una ejecución verde, una roja y otra verde, todas con resumen y artefacto `evidencia.txt`.
 
-**Duración orientativa:** 100 a 120 minutos. **Punto de partida:** tu **misma copia personal**, con los ejercicios 1, 2 y 3 terminados y las dos validaciones del ejercicio 3 incorporadas en `main`. No crees otro repositorio. El trabajo es público y usa únicamente nombres y datos ficticios.
+**Duración orientativa:** 100 a 120 minutos. **Punto de partida:** tu **misma copia personal**, con los ejercicios 1, 2 y 3 terminados y las dos validaciones del ejercicio 3 incorporadas en `main`. No crees otro repositorio. El trabajo es público y usa únicamente nombres y datos ficticios. La [plantilla docente](https://github.com/b-regina/iac-ia-laboratorio-demo) es solo una referencia: **todos tus commits van a tu copia**.
 
 No necesitas instalar software. Trabaja con GitHub.com y github.dev en el navegador, y usa la IA en una segunda pestaña. Si tienes VS Code local autorizado, la ruta alternativa está al final. No añadas secretos, datos corporativos, proveedores cloud ni `tofu apply`.
 
