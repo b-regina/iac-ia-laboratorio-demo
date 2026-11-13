@@ -76,7 +76,7 @@ Al final de la lista `steps:`, justo **después** del paso `Plan del escenario i
           } | tee evidencia.txt >> "$GITHUB_STEP_SUMMARY"
       - name: Publicar evidencia
         if: ${{ always() }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: evidencia-iac-${{ github.run_id }}-${{ github.run_attempt }}
           path: evidencia.txt
@@ -103,7 +103,7 @@ Guarda con `Ctrl+S`. En **Source Control** revisa el cambio: debería verse **so
 
 Antes de abrir la segunda pestaña, responde tú: «¿Qué ocurre con el paso Resumir comprobaciones si falla Plan del escenario integracion?». Después abre **GitHub Copilot Chat en GitHub.com** o **ChatGPT** en otra pestaña. No dependas del agente integrado en VS Code Web. Usa este prompt con **solo el fragmento ficticio** del workflow:
 
-> Estoy aprendiendo GitHub Actions con un laboratorio IaC ficticio. Mi workflow ejecuta OpenTofu `init`, `fmt`, `validate` y dos `plan`. Tiene pasos con `id`, un resumen con `if: ${{ always() }}` que lee `steps.<id>.outcome`, y publica `evidencia.txt` con `actions/upload-artifact@v4`. Explícame en lenguaje sencillo qué ocurrirá si falla el segundo plan, qué comprobaré en los logs y por qué ni el resumen ni el artefacto implican que el despliegue haya sido aprobado. Indica incertidumbres. No sugieras `tofu apply`, credenciales ni servicios cloud.
+> Estoy aprendiendo GitHub Actions con un laboratorio IaC ficticio. Mi workflow ejecuta OpenTofu `init`, `fmt`, `validate` y dos `plan`. Tiene pasos con `id`, un resumen con `if: ${{ always() }}` que lee `steps.<id>.outcome`, y publica `evidencia.txt` con `actions/upload-artifact@v7`. Explícame en lenguaje sencillo qué ocurrirá si falla el segundo plan, qué comprobaré en los logs y por qué ni el resumen ni el artefacto implican que el despliegue haya sido aprobado. Indica incertidumbres. No sugieras `tofu apply`, credenciales ni servicios cloud.
 
 Contrasta la respuesta con el YAML y luego con la ejecución real. Si la IA afirma que `always()` convierte un fallo en éxito, anota que es incorrecto: un paso anterior fallido mantiene el trabajo en rojo. No pegues información de la empresa ni tokens en una herramienta de IA.
 
