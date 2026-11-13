@@ -1,6 +1,6 @@
 resource "terraform_data" "aplicacion" {
   input = {
-    nombre  = "portal-demo"
+    nombre  = var.nombre_aplicacion
     entorno = var.entorno
   }
 }

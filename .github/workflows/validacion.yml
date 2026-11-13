@@ -24,5 +24,7 @@ jobs:
         run: tofu fmt -check -diff
       - name: Validar
         run: tofu validate -no-color
-      - name: Mostrar plan
+      - name: Plan con valores por defecto
         run: tofu plan -input=false -no-color
+      - name: Plan del escenario integracion
+        run: tofu plan -input=false -no-color -var-file=escenario-integracion.tfvars
