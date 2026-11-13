@@ -19,3 +19,5 @@ Para volver a intentarlo, modifica solo el valor de `entorno`, guarda y confirma
 ## Continuidad del laboratorio
 
 Después de terminar la primera práctica en tu **copia personal**, continúa con [Ejercicio 2. Una configuración para dos escenarios](EJERCICIO_2.md). No crees otro repositorio: usarás tus propios commits y los mismos archivos para aprender variables, parámetros y Git. La rama `main` de esta plantilla conserva el punto de partida del ejercicio 1.
+
+Después de terminar el ejercicio 2 en **tu misma copia**, sigue con [Ejercicio 3. Revisar y gobernar un cambio de IaC](EJERCICIO_3.md). Trabajarás en una rama propia, comprobarás una regla de validación y revisarás un pull request antes de fusionarlo.
