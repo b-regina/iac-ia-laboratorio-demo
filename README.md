@@ -21,3 +21,9 @@ Para volver a intentarlo, modifica solo el valor de `entorno`, guarda y confirma
 Esta rama docente continúa `ejercicio-4-solucion`: las dos llamadas de `main.tf` reutilizan `modulo_ficha` para fichas ficticias del portal y de ayuda. `variables.tf` y `escenario-integracion.tfvars` mantienen los dos escenarios anteriores. El workflow comprueba también el formato de la carpeta nueva con `tofu fmt -check -diff -recursive`.
 
 [Guía completa del ejercicio 5](EJERCICIO_5.md). Para el alumnado se recomienda seguirla en su propia copia tras terminar los ejercicios anteriores. El código de esta rama es el solucionario docente. El pipeline solo calcula planes: no ejecuta `apply` ni despliega servicios.
+
+## Ejercicio 6  Política didáctica del plan
+
+Esta rama continúa la solución del ejercicio 5. `politica_plan.py` revisa en cada escenario el plan temporal: solo dos fichas ficticias `terraform_data`, nombres admitidos y el mismo entorno para portal y ayuda. El workflow registra las dos políticas en el resumen. [Guía paso a paso del ejercicio 6](EJERCICIO_6.md).
+
+Los archivos `.tfplan` se crean solo durante la ejecución y ya están excluidos del repositorio. No se sube el JSON ni se ejecuta `apply`. La política es editable junto al código y tiene valor didáctico; una implantación real precisaría reglas protegidas, revisión humana y controles adicionales.
