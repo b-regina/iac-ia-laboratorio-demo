@@ -49,10 +49,10 @@ Aprenderás a separar los valores del código: `variables.tf` declara parámetro
 2. Abre `.github/workflows/validacion.yml`. Al final, deja las primeras etapas como estaban y sustituye solo el paso **Mostrar plan** por estos dos pasos, respetando los espacios:
 
    ```yaml
-      - name: Plan con valores por defecto
-        run: tofu plan -input=false -no-color
-      - name: Plan del escenario integracion
-        run: tofu plan -input=false -no-color -var-file=escenario-integracion.tfvars
+         - name: Plan con valores por defecto
+           run: tofu plan -input=false -no-color
+         - name: Plan del escenario integracion
+           run: tofu plan -input=false -no-color -var-file=escenario-integracion.tfvars
    ```
 
    Los guiones de los pasos deben quedar alineados con `- name: Validar`. No añadas tabuladores. El nombre después de `-var-file=` debe coincidir exactamente con el archivo que creaste.
