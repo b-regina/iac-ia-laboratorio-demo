@@ -22,7 +22,7 @@ jobs:
         run: tofu init -backend=false -input=false
       - name: Comprobar formato
         id: formato
-        run: tofu fmt -check -diff
+        run: tofu fmt -check -diff -recursive
       - name: Validar
         id: validar
         run: tofu validate -no-color
