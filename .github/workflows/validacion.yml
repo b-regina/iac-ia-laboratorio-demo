@@ -35,7 +35,10 @@ jobs:
         run: tofu show -json -plan=plan-predeterminado.tfplan | python3 politica_plan.py
       - name: Plan del escenario integracion
         id: plan_integracion
-        run: tofu plan -input=false -no-color -var-file=escenario-integracion.tfvars -out=plan-integracion.tfplan
+        run: >-
+          tofu plan -input=false -no-color
+          -var-file=escenario-integracion.tfvars
+          -out=plan-integracion.tfplan
       - name: Politica del plan de integracion
         id: politica_integracion
         run: tofu show -json -plan=plan-integracion.tfplan | python3 politica_plan.py
