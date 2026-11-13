@@ -5,6 +5,7 @@
 crash.log
 crash.*.log
 *.tfvars
+!escenario-integracion.tfvars
 *.tfvars.json
 .env
 .env.*
