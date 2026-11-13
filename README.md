@@ -15,3 +15,7 @@ Si no tienes GitHub Copilot disponible, pega el código ficticio en ChatGPT Free
 Si el editor de `github.dev` pide una autorización que tu cuenta o navegador no permite, puedes hacer el mismo cambio desde `github.com`: abre `variables.tf`, pulsa **Edit this file** (icono del lápiz), modifica el valor y elige **Commit changes**. Después consulta **Actions** como en el paso 4.
 
 Para volver a intentarlo, modifica solo el valor de `entorno`, guarda y confirma un nuevo commit. La guía del ejercicio explica los puntos de control, las incidencias y las preguntas finales.
+
+## Continuidad del laboratorio
+
+Después de terminar la primera práctica en tu **copia personal**, continúa con [Ejercicio 2. Una configuración para dos escenarios](EJERCICIO_2.md). No crees otro repositorio: usarás tus propios commits y los mismos archivos para aprender variables, parámetros y Git. La rama `main` de esta plantilla conserva el punto de partida del ejercicio 1.
