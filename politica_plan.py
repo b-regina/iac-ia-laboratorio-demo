@@ -21,6 +21,15 @@ def rechazar(motivo):
     raise SystemExit(1)
 
 
+def contiene_marca(estructura):
+    """Detecta cualquier true en el árbol de marcas del plan JSON."""
+    if isinstance(estructura, dict):
+        return any(contiene_marca(valor) for valor in estructura.values())
+    if isinstance(estructura, list):
+        return any(contiene_marca(valor) for valor in estructura)
+    return estructura is True
+
+
 try:
     plan = json.load(sys.stdin)
 except (ValueError, UnicodeError):
@@ -43,9 +52,9 @@ for cambio in cambios:
     detalle = cambio.get("change", {})
     if detalle.get("actions") != ["create"]:
         rechazar(f"solo se permiten altas ficticias en {direccion}")
-    if detalle.get("after_unknown", {}).get("input"):
+    if contiene_marca(detalle.get("after_unknown", {}).get("input")):
         rechazar(f"entradas desconocidas en {direccion}")
-    if detalle.get("after_sensitive", {}).get("input"):
+    if contiene_marca(detalle.get("after_sensitive", {}).get("input")):
         rechazar(f"entradas sensibles en {direccion}")
 
     entrada = detalle.get("after", {}).get("input")
