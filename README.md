@@ -1,17 +1,26 @@
-# Laboratorio de IaC e IA
+# Ejercicio 1 · demostración docente resuelta
 
-Proyecto ficticio `portal-demo` para practicar Infraestructura como Código. El código registra un nombre y un entorno mediante `terraform_data`, un recurso integrado en OpenTofu. El workflow calcula un plan y muestra lo que se registraría. No aplica cambios ni crea infraestructura en la nube.
+Caso ficticio: `portal-demo`. Esta rama muestra el ejercicio ya terminado para proyectarlo en clase. La configuración solo usa `terraform_data`; GitHub Actions calcula un plan, sin ejecutar `tofu apply` ni desplegar infraestructura comercial.
 
-## Primera práctica desde el navegador
+## Abrir y explicar en clase
 
-1. En tu copia del repositorio, cambia `github.com` por `github.dev` en la URL. Puede abrirse en `vscode.dev`. Abre `variables.tf`.
-2. Lee `default = "desarrollo"` y predice qué mostrará el plan. Cambia el valor a `pruebas` y guarda con `Ctrl+S`.
-3. Abre Control de código fuente, escribe el mensaje `Ejercicio 1: cambiar entorno a pruebas` y confirma el cambio con **Commit & Push**. Si el editor presenta los pasos por separado, confirma primero y después publica o sincroniza los cambios.
-4. En la página de tu repositorio en `github.com`, entra en **Actions** y abre la ejecución de **Validacion IaC** correspondiente a tu commit. Abre el trabajo **comprobar** y consulta las etapas Inicializar, Comprobar formato, Validar y Mostrar plan.
-5. En el plan, busca `terraform_data.aplicacion`, `entorno = "pruebas"` y `Plan: 1 to add, 0 to change, 0 to destroy`. En cada ejecución se usa un runner nuevo, así que no conserva el estado de ejecuciones anteriores.
+[Ver esta rama en GitHub](https://github.com/b-regina/iac-ia-laboratorio-demo/tree/ejercicio-1-solucion) · [Abrir en VS Code Online](https://github.dev/b-regina/iac-ia-laboratorio-demo/tree/ejercicio-1-solucion)
 
-Si no tienes GitHub Copilot disponible, pega el código ficticio en ChatGPT Free y solicita que identifique variable, recurso y salida. Comprueba las afirmaciones mirando los archivos y el resultado del workflow.
+| Archivo | Qué conviene señalar |
+| --- | --- |
+| `variables.tf` | La variable `entorno` tiene ahora `default = "pruebas"`. Este es el cambio que realiza el alumnado. |
+| `main.tf` | `terraform_data.aplicacion` recibe el nombre ficticio `portal-demo` y `var.entorno`. |
+| `outputs.tf` | `resumen` apunta a la salida del recurso. El plan indica que su valor se conocería tras una aplicación; aquí no se aplica. |
+| `.github/workflows/validacion.yml` | En cada commit, el runner instala OpenTofu y ejecuta `init`, `fmt`, `validate` y `plan`. |
 
-Si el editor de `github.dev` pide una autorización que tu cuenta o navegador no permite, puedes hacer el mismo cambio desde `github.com`: abre `variables.tf`, pulsa **Edit this file** (icono del lápiz), modifica el valor y elige **Commit changes**. Después consulta **Actions** como en el paso 4.
+## Comparar el punto de partida con la solución
 
-Para volver a intentarlo, modifica solo el valor de `entorno`, guarda y confirma un nuevo commit. La guía del ejercicio explica los puntos de control, las incidencias y las preguntas finales.
+En el [punto de partida del ejercicio 1](https://github.com/b-regina/iac-ia-laboratorio-demo/tree/65474c0ba004aecb5a02bb88f36a4a144f1eb679), `entorno` valía `"desarrollo"`. El [commit de la solución](https://github.com/b-regina/iac-ia-laboratorio-demo/commit/b9a46514f0f2dce8c529e7ada20fbcdb63be3454) cambia únicamente ese valor a `"pruebas"`. Este README pertenece solo a la rama docente; el punto de partida y la rama principal no se modificaron para preparar esta demostración.
+
+## Mostrar la ejecución real
+
+Abre la [ejecución correcta de la solución](https://github.com/b-regina/iac-ia-laboratorio-demo/actions/runs/43618066643) y entra en el trabajo **comprobar**. Las cuatro comprobaciones terminan correctamente. En **Mostrar plan** aparecen `terraform_data.aplicacion`, `entorno = "pruebas"`, `nombre = "portal-demo"` y `Plan: 1 to add, 0 to change, 0 to destroy`.
+
+**Interpretación:** el runner empieza sin estado previo y describe lo que haría una aplicación. El plan no crea recursos reales. Si se quiere enseñar IA, abre GitHub Copilot o ChatGPT en una segunda pestaña y pide que explique la relación entre `var.entorno`, el recurso y el plan; contrasta la respuesta con estos archivos y los registros.
+
+**Para el alumnado:** utiliza la guía de la práctica y su propio punto de partida. Esta rama es la referencia resuelta para la docente.
