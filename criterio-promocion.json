@@ -1,0 +1,7 @@
+{
+  "origen": "pruebas",
+  "destino": "integracion",
+  "nombre_portal_origen": "portal-demo",
+  "nombre_portal_destino": "portal-interno",
+  "responsable_destino": "equipo-integracion"
+}

@@ -42,6 +42,15 @@ jobs:
       - name: Politica del plan de integracion
         id: politica_integracion
         run: tofu show -json -plan=plan-integracion.tfplan | python3 politica_plan.py
+      - name: Revisar promocion entre escenarios
+        id: promocion
+        run: |
+          tofu show -json -plan=plan-predeterminado.tfplan > "$RUNNER_TEMP/plan-origen.json"
+          tofu show -json -plan=plan-integracion.tfplan > "$RUNNER_TEMP/plan-destino.json"
+          python3 revision_promocion.py \
+            "$RUNNER_TEMP/plan-origen.json" \
+            "$RUNNER_TEMP/plan-destino.json" \
+            criterio-promocion.json
       - name: Resumir comprobaciones
         if: ${{ always() }}
         run: |
@@ -58,6 +67,7 @@ jobs:
             echo "| Política predeterminada | ${{ steps.politica_predeterminado.outcome }} |"
             echo "| Plan de integración | ${{ steps.plan_integracion.outcome }} |"
             echo "| Política de integración | ${{ steps.politica_integracion.outcome }} |"
+            echo "| Revisión de promoción | ${{ steps.promocion.outcome }} |"
           } | tee evidencia.txt >> "$GITHUB_STEP_SUMMARY"
       - name: Publicar evidencia
         if: ${{ always() }}

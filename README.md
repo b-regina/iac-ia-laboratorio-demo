@@ -1,19 +1,14 @@
-# Ejercicio 8 · Demostración docente resuelta
+# Ejercicio 9 · Demostración docente resuelta
 
-**Esta rama contiene la solución completa del taller final.** Se ha construido sobre el código del ejercicio 7. Úsala para proyectar los archivos y los resultados; el alumnado trabaja en su propio repositorio siguiendo la [guía del ejercicio 8](EJERCICIO_8.md).
+**Ampliación opcional** sobre el taller final de las 25 horas. Esta rama conserva el mismo proyecto y añade una comparación entre el plan de pruebas y el de integración. La [guía de alumnado](EJERCICIO_9.md) se realiza en la copia personal de cada participante.
 
-## Recorrido para proyectar
+## Guion para proyectar
 
-1. `variables.tf` y `escenario-integracion.tfvars`: el responsable es `equipo-lab` en pruebas y `equipo-integracion` en integración.
-2. `main.tf` y `modulo_ficha/variables.tf`: la raíz pasa el responsable a cada instancia del módulo.
-3. `modulo_ficha/main.tf`: cada ficha ficticia incluye `etiquetas` con proyecto, entorno y responsable.
-4. `politica_plan.py`: el plan se acepta solo si ambas fichas tienen metadatos coherentes y el responsable corresponde al escenario.
-5. **Actions**: compara una [ejecución correcta](https://github.com/b-regina/iac-ia-laboratorio-demo/actions/runs/43619445025), un [rechazo deliberado del responsable en integración](https://github.com/b-regina/iac-ia-laboratorio-demo/actions/runs/43619239686) y la [ejecución corregida](https://github.com/b-regina/iac-ia-laboratorio-demo/actions/runs/43619295702). El fallo y la corrección se hicieron en una rama de ensayo, sin contaminar esta solución.
+1. `criterio-promocion.json`: nombre y responsable esperados en el caso ficticio.
+2. `revision_promocion.py`: extrae dos fichas de cada plan y compara los escenarios con el criterio.
+3. `.github/workflows/validacion.yml`: tras los dos planes y las dos políticas individuales, genera JSON temporales y ejecuta la revisión conjunta. El resumen muestra su resultado.
+4. Actions: compara la ejecución verde de la solución, la rama de ensayo con `portal-ensayo` (políticas individuales verdes y revisión conjunta roja) y la corrección verde. Los enlaces comprobados se incluirán al cerrar la validación.
 
-## Separación de versiones
+La versión sin resolver está en [`ejercicio-9-inicio`](https://github.com/b-regina/iac-ia-laboratorio-demo/tree/ejercicio-9-inicio). `main` continúa como plantilla inicial del ejercicio 1. Cada alumno mantiene **un único repositorio personal** durante los ejercicios; estas ramas docentes son referencias, no copias nuevas que deban importar.
 
-- [`main`](https://github.com/b-regina/iac-ia-laboratorio-demo/tree/main): plantilla inicial del ejercicio 1.
-- [`ejercicio-8-inicio`](https://github.com/b-regina/iac-ia-laboratorio-demo/tree/ejercicio-8-inicio): código del ejercicio 7 terminado, sin resolver el 8.
-- **`ejercicio-8-solucion` (esta rama):** resultado docente del ejercicio 8.
-
-Hay **un solo proyecto que evoluciona**. Cada participante usa una copia personal y conserva sus propios cambios entre ejercicios; no necesita copiar una rama docente nueva en cada sesión. Los documentos Word/PDF son instrucciones separadas por ejercicio. Este laboratorio solo planifica recursos `terraform_data`; las etiquetas son metadatos ficticios y **no hay `apply`, credenciales ni despliegue cloud**.
+El criterio es editable con el código: su aprobación real requeriría protección y revisión independientes. El pipeline solo calcula planes de `terraform_data`. **No ejecuta `tofu apply` ni despliega infraestructura.**
