@@ -33,3 +33,9 @@ Los archivos `.tfplan` se crean solo durante la ejecución y ya están excluidos
 Esta rama docente continúa el ejercicio 6. Un mapa local reúne `portal` y `ayuda`, y una única llamada a `modulo_ficha` usa `for_each` para planificar las dos fichas ficticias. La salida `resumen` conserva las claves del catálogo. La política reconoce las nuevas direcciones de las instancias y sigue permitiendo exactamente dos fichas. [Guía paso a paso del ejercicio 7](EJERCICIO_7.md).
 
 La rama de ensayo añade una tercera entrada y demuestra que el plan puede calcular tres altas mientras la política rechaza el cambio; después se corrige. No se ejecuta `apply`. En un entorno con estado persistente, cambiar direcciones de módulos requeriría planificar la migración del estado.
+
+## Ejercicio 8  Taller final resuelto
+
+Esta rama docente añade metadatos ficticios a las dos fichas del catálogo anterior. El equipo responsable cambia con el escenario (`equipo-lab` en pruebas y `equipo-integracion` en integración), y `politica_plan.py` comprueba la coherencia de las etiquetas en ambos planes. [Guía paso a paso del alumnado](EJERCICIO_8.md) · [Ejecución verde](https://github.com/b-regina/iac-ia-laboratorio-demo/actions/runs/43619174497) · [Rechazo deliberado](https://github.com/b-regina/iac-ia-laboratorio-demo/actions/runs/43619239686) · [Corrección verde](https://github.com/b-regina/iac-ia-laboratorio-demo/actions/runs/43619295702).
+
+Para proyectar: abre `variables.tf`, `escenario-integracion.tfvars`, `main.tf`, `modulo_ficha/variables.tf`, `modulo_ficha/main.tf` y `politica_plan.py` en ese orden. Después compara los dos planes y el rechazo de integración. La versión inicial está aislada en la rama [`ejercicio-8-inicio`](https://github.com/b-regina/iac-ia-laboratorio-demo/tree/ejercicio-8-inicio). No hay `apply` ni infraestructura comercial. El mapa `etiquetas` es una simulación, no etiquetado cloud real.
