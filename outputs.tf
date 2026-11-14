@@ -1,7 +1,6 @@
 output "resumen" {
-  description = "Fichas previstas para el caso ficticio"
+  description = "Catalogo de fichas ficticias previsto para este entorno"
   value = {
-    portal = module.portal.resumen
-    ayuda  = module.ayuda.resumen
+    for clave, ficha in module.fichas : clave => ficha.resumen
   }
 }

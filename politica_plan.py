@@ -5,8 +5,8 @@ import sys
 
 
 ESPERADOS = {
-    "module.portal.terraform_data.ficha",
-    "module.ayuda.terraform_data.ficha",
+    'module.fichas["portal"].terraform_data.ficha',
+    'module.fichas["ayuda"].terraform_data.ficha',
 }
 ENTORNOS = {"desarrollo", "pruebas", "integracion"}
 
@@ -54,7 +54,7 @@ for cambio in cambios:
         rechazar(f"entorno no permitido en {direccion}")
     valores[direccion] = entrada
 
-if valores["module.ayuda.terraform_data.ficha"]["nombre"] != "portal-ayuda":
+if valores['module.fichas["ayuda"].terraform_data.ficha']["nombre"] != "portal-ayuda":
     rechazar("la ficha de ayuda debe llamarse portal-ayuda")
 if len({entrada["entorno"] for entrada in valores.values()}) != 1:
     rechazar("portal y ayuda deben pertenecer al mismo entorno")

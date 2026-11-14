@@ -27,3 +27,9 @@ Esta rama docente continúa `ejercicio-4-solucion`: las dos llamadas de `main.tf
 Esta rama continúa la solución del ejercicio 5. `politica_plan.py` revisa en cada escenario el plan temporal: solo dos fichas ficticias `terraform_data`, nombres admitidos y el mismo entorno para portal y ayuda. El workflow registra las dos políticas en el resumen. [Guía paso a paso del ejercicio 6](EJERCICIO_6.md).
 
 Los archivos `.tfplan` se crean solo durante la ejecución y ya están excluidos del repositorio. No se sube el JSON ni se ejecuta `apply`. La política es editable junto al código y tiene valor didáctico; una implantación real precisaría reglas protegidas, revisión humana y controles adicionales.
+
+## Ejercicio 7  Catálogo reutilizable
+
+Esta rama docente continúa el ejercicio 6. Un mapa local reúne `portal` y `ayuda`, y una única llamada a `modulo_ficha` usa `for_each` para planificar las dos fichas ficticias. La salida `resumen` conserva las claves del catálogo. La política reconoce las nuevas direcciones de las instancias y sigue permitiendo exactamente dos fichas. [Guía paso a paso del ejercicio 7](EJERCICIO_7.md).
+
+La rama de ensayo añade una tercera entrada y demuestra que el plan puede calcular tres altas mientras la política rechaza el cambio; después se corrige. No se ejecuta `apply`. En un entorno con estado persistente, cambiar direcciones de módulos requeriría planificar la migración del estado.
