@@ -17,3 +17,8 @@ variable "entorno" {
     error_message = "El entorno del modulo debe ser desarrollo, pruebas o integracion."
   }
 }
+
+variable "responsable" {
+  description = "Equipo ficticio responsable de la ficha"
+  type        = string
+}
