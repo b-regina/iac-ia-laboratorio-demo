@@ -1,8 +1,7 @@
 locals {
   catalogo = {
-    portal   = var.nombre_aplicacion
-    ayuda    = "portal-ayuda"
-    informes = "portal-informes"
+    portal = var.nombre_aplicacion
+    ayuda  = "portal-ayuda"
   }
 }
 
