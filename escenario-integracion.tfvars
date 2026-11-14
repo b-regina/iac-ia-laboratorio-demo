@@ -1,3 +1,3 @@
 entorno           = "integracion"
 nombre_aplicacion = "portal-interno"
-responsable       = "equipo-lab"
+responsable       = "equipo-integracion"
