@@ -1,3 +1,9 @@
+# Punto de partida del ejercicio 8
+
+Esta rama conserva la **solución técnica del ejercicio 7** para iniciar el taller final. La [guía del ejercicio 8](EJERCICIO_8.md) explica cómo continuar en tu propia copia. Los seis archivos técnicos todavía no tienen las etiquetas ni la regla de responsables del ejercicio 8. Crea una rama en tu repositorio personal a partir de tu ejercicio 7; no edites esta rama docente.
+
+---
+
 # Laboratorio de IaC e IA
 
 Proyecto ficticio `portal-demo` para practicar Infraestructura como Código. El código registra un nombre y un entorno mediante `terraform_data`, un recurso integrado en OpenTofu. El workflow calcula un plan y muestra lo que se registraría. No aplica cambios ni crea infraestructura en la nube.
