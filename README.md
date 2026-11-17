@@ -22,10 +22,11 @@ Este repositorio contiene **un único proyecto ficticio**, `portal-demo`. Vas a 
 | 4 | [Automatización y evidencias](GUIAS/Guia_Alumnado_Ejercicio_4.docx?raw=1) | Mejorar el workflow y diagnosticar un fallo real de la práctica. |
 | 5 | [Módulo reutilizable](GUIAS/Guia_Alumnado_Ejercicio_5.docx?raw=1) | Crear un módulo local y usarlo para dos fichas ficticias. |
 | 6 | [Política automática sobre el plan](GUIAS/Ejercicio_6.md) | Revisar con IA y Python dos planes; comprobar un rechazo y su corrección. |
+| 7 | [Catálogo reutilizable y control](GUIAS/Ejercicio_7.md) | Convertir dos módulos en un catálogo, adaptar la política y comprobar una tercera ficha rechazada. |
 
 **El ejercicio 2 empieza donde dejaste el 1**; no crees otra copia. Sigue el mismo principio para los siguientes. Las guías están en `GUIAS/`; el código que editarás está en la raíz y en `.github/workflows/`.
 
-**Si ya creaste tu copia:** las guías añadidas posteriormente a esta plantilla no se incorporan automáticamente a ella. Abre el enlace de la guía 6 desde aquí, continúa en tu copia personal y crea allí solo los archivos y cambios que pide la práctica. No vuelvas a clonar, no borres los ejercicios anteriores y no copies una rama resuelta.
+**Si ya creaste tu copia:** las guías añadidas posteriormente a esta plantilla no se incorporan automáticamente a ella. Abre los enlaces de las guías 6 y 7 desde aquí, continúa en tu copia personal y crea allí solo los archivos y cambios que pide la práctica. No vuelvas a clonar, no borres los ejercicios anteriores y no copies una rama resuelta.
 
 ## Qué son los archivos iniciales
 
@@ -36,4 +37,4 @@ Este repositorio contiene **un único proyecto ficticio**, `portal-demo`. Vas a 
 | `outputs.tf` | Define el resumen del plan. |
 | `.github/workflows/validacion.yml` | Instala OpenTofu y ejecuta las comprobaciones en GitHub Actions. |
 
-El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni infraestructura comercial. Si tu equipo permite VS Code local, puedes usarlo con **esa misma copia**: el código y la comprobación en Actions son los mismos. La ruta principal, explicada paso a paso en los Word, funciona desde el navegador.
+El workflow calcula un plan, **no ejecuta `tofu apply`** y no crea una web ni infraestructura comercial. Si tu equipo permite VS Code local, puedes usarlo con **esa misma copia**: el código y la comprobación en Actions son los mismos. La ruta principal, explicada paso a paso en las guías de `GUIAS/`, funciona desde el navegador.
