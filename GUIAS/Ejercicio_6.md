@@ -42,7 +42,7 @@ El plan se guardará temporalmente con `tofu plan -out=...`. `tofu show -json -p
 
 ## Paso 2  Diseña la política con ayuda de IA y crea el archivo
 
-Antes de copiar la referencia, pide a la IA un esquema de comprobaciones con este prompt:
+Antes de escribir código, pide a la IA un esquema de comprobaciones con este prompt:
 
 > Tengo dos fichas ficticias `terraform_data`, portal y ayuda. OpenTofu produce un plan JSON. Necesito rechazar cualquier plan que no tenga exactamente esas dos fichas, que use otro tipo de recurso o una acción distinta de crear, o que ponga cada ficha en un entorno distinto. No uses servicios cloud. Propón primero un pseudocódigo breve y dime qué propiedades del JSON habría que comprobar. No inventes el contenido del plan.
 
