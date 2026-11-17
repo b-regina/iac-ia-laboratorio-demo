@@ -14,7 +14,7 @@ Este repositorio contiene **un único proyecto ficticio**, `portal-demo`. Vas a 
 
 ## Guías de ejercicios
 
-| Orden | Guía Word | Qué harás en la misma copia |
+| Orden | Guía | Qué harás en la misma copia |
 | --- | --- | --- |
 | 1 | [Puesta en marcha, IA y primer plan](GUIAS/Guia_Alumnado_Ejercicio_1.docx?raw=1) | Crear la copia, comprender tres archivos, cambiar un entorno y leer el resultado. |
 | 2 | [Dos escenarios](GUIAS/Guia_Alumnado_Ejercicio_2.docx?raw=1) | Parametrizar la configuración y comparar dos planes. |
@@ -23,10 +23,11 @@ Este repositorio contiene **un único proyecto ficticio**, `portal-demo`. Vas a 
 | 5 | [Módulo reutilizable](GUIAS/Guia_Alumnado_Ejercicio_5.docx?raw=1) | Crear un módulo local y usarlo para dos fichas ficticias. |
 | 6 | [Política automática sobre el plan](GUIAS/Ejercicio_6.md) | Revisar con IA y Python dos planes; comprobar un rechazo y su corrección. |
 | 7 | [Catálogo reutilizable y control](GUIAS/Ejercicio_7.md) | Convertir dos módulos en un catálogo, adaptar la política y comprobar una tercera ficha rechazada. |
+| 8 | [Taller final de IaC gobernada](GUIAS/Ejercicio_8.md) | Añadir etiquetas y equipos responsables ficticios, verificar dos escenarios y corregir un rechazo de política. |
 
 **El ejercicio 2 empieza donde dejaste el 1**; no crees otra copia. Sigue el mismo principio para los siguientes. Las guías están en `GUIAS/`; el código que editarás está en la raíz y en `.github/workflows/`.
 
-**Si ya creaste tu copia:** las guías añadidas posteriormente a esta plantilla no se incorporan automáticamente a ella. Abre los enlaces de las guías 6 y 7 desde aquí, continúa en tu copia personal y crea allí solo los archivos y cambios que pide la práctica. No vuelvas a clonar, no borres los ejercicios anteriores y no copies una rama resuelta.
+**Si ya creaste tu copia:** las guías añadidas posteriormente a esta plantilla no se incorporan automáticamente a ella. Abre los enlaces de las guías 6, 7 y 8 desde aquí, continúa en tu copia personal y crea allí solo los archivos y cambios que pide la práctica. No vuelvas a clonar, no borres los ejercicios anteriores y no copies una rama resuelta.
 
 ## Qué son los archivos iniciales
 
