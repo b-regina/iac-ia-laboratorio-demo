@@ -12,7 +12,7 @@ Este repositorio contiene **un único proyecto ficticio**, `portal-demo`. Vas a 
 
 **No necesitas instalar GitHub Actions, OpenTofu, Git ni VS Code en tu equipo para la ruta de navegador.** GitHub Actions es una pestaña de GitHub; el workflow instala OpenTofu en un ejecutor temporal. `github.dev` es el editor web. Abre ChatGPT o Copilot Chat en **otra pestaña** para preguntar, predecir y revisar. Usa solo datos ficticios.
 
-## Las cinco guías
+## Guías de ejercicios
 
 | Orden | Guía Word | Qué harás en la misma copia |
 | --- | --- | --- |
@@ -21,8 +21,11 @@ Este repositorio contiene **un único proyecto ficticio**, `portal-demo`. Vas a 
 | 3 | [Revisión y gobierno](GUIAS/Guia_Alumnado_Ejercicio_3.docx?raw=1) | Crear una rama, añadir validaciones y revisar un pull request. |
 | 4 | [Automatización y evidencias](GUIAS/Guia_Alumnado_Ejercicio_4.docx?raw=1) | Mejorar el workflow y diagnosticar un fallo real de la práctica. |
 | 5 | [Módulo reutilizable](GUIAS/Guia_Alumnado_Ejercicio_5.docx?raw=1) | Crear un módulo local y usarlo para dos fichas ficticias. |
+| 6 | [Política automática sobre el plan](GUIAS/Ejercicio_6.md) | Revisar con IA y Python dos planes; comprobar un rechazo y su corrección. |
 
-**El ejercicio 2 empieza donde dejaste el 1**; no crees otra copia. Sigue el mismo principio para los siguientes. Las guías están en `GUIAS/` para poder descargarlas; el código que editarás está en la raíz y en `.github/workflows/`.
+**El ejercicio 2 empieza donde dejaste el 1**; no crees otra copia. Sigue el mismo principio para los siguientes. Las guías están en `GUIAS/`; el código que editarás está en la raíz y en `.github/workflows/`.
+
+**Si ya creaste tu copia:** las guías añadidas posteriormente a esta plantilla no se incorporan automáticamente a ella. Abre el enlace de la guía 6 desde aquí, continúa en tu copia personal y crea allí solo los archivos y cambios que pide la práctica. No vuelvas a clonar, no borres los ejercicios anteriores y no copies una rama resuelta.
 
 ## Qué son los archivos iniciales
 
