@@ -48,74 +48,16 @@ Antes de copiar la referencia, pide a la IA un esquema de comprobaciones con est
 
 Escribe tu propia predicción: ¿qué error de negocio escaparía de `tofu validate`? Después contrasta las sugerencias con la referencia de abajo. La IA puede equivocarse en las claves JSON; el plan y Actions son los que deciden.
 
-En el Explorador de github.dev, selecciona la **raíz del repositorio**, pulsa **New File** y escribe exactamente `politica_plan.py`. No lo crees dentro de `modulo_ficha` ni de `.github`. Copia el código siguiente y guarda con `Ctrl+S`:
+En el Explorador de github.dev, selecciona la **raíz del repositorio**, pulsa **New File** y escribe exactamente `politica_plan.py`. No lo crees dentro de `modulo_ficha` ni de `.github`. Diseña el contenido en este orden. Escribe tú el código con apoyo de la IA de la segunda pestaña y guarda con `Ctrl+S`:
 
-```python
-"""Política didáctica para el plan ficticio leído desde la entrada estándar."""
+1. Importa `json` y `sys`. Declara las dos direcciones esperadas: `module.portal.terraform_data.ficha` y `module.ayuda.terraform_data.ficha`. Los entornos admitidos son `desarrollo`, `pruebas` e `integracion`.
+2. Define `rechazar(motivo)` para imprimir `POLÍTICA RECHAZADA: ...` y terminar con `SystemExit(1)`. Una aprobación debe finalizar normalmente con código 0.
+3. Lee el JSON desde `sys.stdin` con `json.load`. Si no es JSON válido o falta `resource_changes`, rechaza con un motivo legible.
+4. Exige exactamente dos cambios y comprueba que sus direcciones son las esperadas. En cada cambio exige `mode == "managed"`, `type == "terraform_data"` y `change.actions == ["create"]`.
+5. En `change.after.input` admite únicamente `nombre` y `entorno` como cadenas conocidas. Rechaza entradas desconocidas o marcadas como sensibles. El nombre debe empezar por `portal-`; la ayuda debe llamarse exactamente `portal-ayuda`.
+6. Comprueba que las dos fichas tienen el mismo entorno y que está en el conjunto admitido. Si todo pasa, imprime `POLÍTICA APROBADA: dos fichas ficticias, mismo entorno y sin operaciones reales`.
 
-import json
-import sys
-
-
-ESPERADOS = {
-    "module.portal.terraform_data.ficha",
-    "module.ayuda.terraform_data.ficha",
-}
-ENTORNOS = {"desarrollo", "pruebas", "integracion"}
-
-
-def rechazar(motivo):
-    print(f"POLÍTICA RECHAZADA: {motivo}")
-    raise SystemExit(1)
-
-
-try:
-    plan = json.load(sys.stdin)
-except (ValueError, UnicodeError):
-    rechazar("no se pudo leer el plan JSON")
-
-cambios = plan.get("resource_changes")
-if not isinstance(cambios, list):
-    rechazar("el plan no contiene una lista de cambios")
-
-direcciones = [c.get("address") for c in cambios if isinstance(c, dict)]
-if len(cambios) != 2 or set(direcciones) != ESPERADOS:
-    rechazar("se esperan exactamente las fichas portal y ayuda")
-
-valores = {}
-for cambio in cambios:
-    direccion = cambio["address"]
-    if cambio.get("mode") != "managed" or cambio.get("type") != "terraform_data":
-        rechazar(f"tipo de recurso no permitido en {direccion}")
-
-    detalle = cambio.get("change", {})
-    if detalle.get("actions") != ["create"]:
-        rechazar(f"solo se permiten altas ficticias en {direccion}")
-    if detalle.get("after_unknown", {}).get("input"):
-        rechazar(f"entradas desconocidas en {direccion}")
-    if detalle.get("after_sensitive", {}).get("input"):
-        rechazar(f"entradas sensibles en {direccion}")
-
-    entrada = detalle.get("after", {}).get("input")
-    if not isinstance(entrada, dict) or set(entrada) != {"nombre", "entorno"}:
-        rechazar(f"entradas inesperadas en {direccion}")
-
-    nombre, entorno = entrada["nombre"], entrada["entorno"]
-    if not isinstance(nombre, str) or not nombre.startswith("portal-"):
-        rechazar(f"nombre fuera de la convención en {direccion}")
-    if not isinstance(entorno, str) or entorno not in ENTORNOS:
-        rechazar(f"entorno no permitido en {direccion}")
-    valores[direccion] = entrada
-
-if valores["module.ayuda.terraform_data.ficha"]["nombre"] != "portal-ayuda":
-    rechazar("la ficha de ayuda debe llamarse portal-ayuda")
-if len({entrada["entorno"] for entrada in valores.values()}) != 1:
-    rechazar("portal y ayuda deben pertenecer al mismo entorno")
-
-print("POLÍTICA APROBADA: dos fichas ficticias, mismo entorno y sin operaciones reales")
-```
-
-**Qué hace cada bloque:** las constantes definen qué se permite; `json.load` recibe la representación del plan; `resource_changes` contiene los recursos previstos; el bucle revisa cada tipo, acción y entrada; la última condición compara los dos entornos. La función `rechazar` explica el motivo y hace fallar el paso. Si falta la lista de cambios o aparecen entradas desconocidas, la política también rechaza el plan.
+Para pedir ayuda a la IA con la implementación, pega estas seis reglas y añade: «Devuélveme el archivo `politica_plan.py` completo para Python 3, leyendo el JSON por entrada estándar. Explica cada bloque y señala dónde podría fallar con datos incompletos. No uses dependencias externas». **Revisa el código recibido** antes de guardarlo. El ejercicio consiste en entender y verificar la regla; una respuesta de IA sin comprobación no constituye una prueba.
 
 **Punto de control:** comprueba la indentación de Python. Las líneas dentro de `if`, `try`, `except`, `for` y `def` llevan cuatro espacios. No cambies `main.tf` todavía.
 
